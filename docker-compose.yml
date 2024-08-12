@@ -1,16 +1,14 @@
-version: '3.9'
+version: '3.8'
 
 services:
   db:
-    image: postgres:13
+    image: postgres:13-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
-    networks:
-      - mynetwork
 
   web:
     build: .
@@ -22,18 +20,11 @@ services:
     depends_on:
       - db
     environment:
-      - DJANGO_SETTINGS_MODULE=myproject.settings
-      - POSTGRES_DB=mydatabase
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=mypassword
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-    networks:
-      - mynetwork
+      DEBUG: '1'
+      DB_NAME: mydatabase
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+      DB_HOST: db
 
 volumes:
   postgres_data:
-
-networks:
-  mynetwork:
-
