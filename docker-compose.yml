@@ -3,7 +3,7 @@ version: '3.9'
 services:
   web:
     build: .
-    command: ["python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+    command: ["/bin/sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
     volumes:
       - .:/app
     ports:
@@ -14,9 +14,9 @@ services:
       DEBUG: False
       ALLOWED_HOSTS: localhost 127.0.0.1
       SQL_ENGINE: django.db.backends.postgresql
-      SQL_DATABASE: se_lab_exp_7
-      SQL_USER: se_lab_exp_7_user
-      SQL_PASSWORD: se_lab_exp_7_pass
+      SQL_DATABASE: db
+      SQL_USER: user
+      SQL_PASSWORD: pass
       SQL_HOST: db
       SQL_PORT: 5432
 
@@ -27,9 +27,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: se_lab_exp_7
-      POSTGRES_USER: se_lab_exp_7_user
-      POSTGRES_PASSWORD: se_lab_exp_7_pass
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
 
 volumes:
   db:
