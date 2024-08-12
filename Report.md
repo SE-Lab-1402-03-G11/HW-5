@@ -33,4 +33,20 @@
 
 <h2>تعامل با داکر</h2>
 
+<h3>نمایش دادن image‌ها و container‌ها</h3>
+
+<p>تصویر زیر مربوط به نمایش دادن image‌هاست. از دستور docker image ls استفاده کرده‌ایم. می‌توان دید که hw-5-web و docker.arvancloud.ir/postgres همان image‌های ما هستند:</p>
+
+![نمایش دادن image‌ها](https://github.com/SE-Lab-1402-03-G11/HW-5/blob/AliRahmizad/Documents/Report/Report%20Photos/3-1.jpg)
+
+<p>تصویر زیر مربوط به نمایش دادن کانتینرهاست. دستور اول، یعنی docker ps، برای نمایش دادن کانتینرهای پروژه‌ی ما به کار رفته است و دستور دوم، یعنی docker ps -a، برای نشان دادن تمامی کانتینرهای این هاست:</p>
+
+![نمایش دادن کانتینرها](https://github.com/SE-Lab-1402-03-G11/HW-5/blob/AliRahmizad/Documents/Report/Report%20Photos/3-2.jpg)
+
+<h3>اجرا شدن دستور در کانتینر وب‌سرور</h3>
+
+<p>تصویر زیر هم اجرا شدن یک دستور در کانتینر وب‌سرور را نشان می‌دهد که می‌توانید دستور و خروجی آن را مشاهده کنید:</p>
+
+![اجرا شدن دستور در وب‌سرور](https://github.com/SE-Lab-1402-03-G11/HW-5/blob/AliRahmizad/Documents/Report/Report%20Photos/3-3.jpg)
+
 <h2>پرسش‌ها</h2>
