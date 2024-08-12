@@ -1,18 +1,9 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  db:
-    image: postgres:13-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: ["python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
     volumes:
       - .:/app
     ports:
@@ -20,11 +11,25 @@ services:
     depends_on:
       - db
     environment:
-      DEBUG: '1'
-      DB_NAME: mydatabase
-      DB_USER: myuser
-      DB_PASSWORD: mypassword
-      DB_HOST: db
+      DEBUG: False
+      ALLOWED_HOSTS: localhost 127.0.0.1
+      SQL_ENGINE: django.db.backends.postgresql
+      SQL_DATABASE: se_lab_exp_7
+      SQL_USER: se_lab_exp_7_user
+      SQL_PASSWORD: se_lab_exp_7_pass
+      SQL_HOST: db
+      SQL_PORT: 5432
+
+  db:
+    image: docker.arvancloud.ir/postgres:16.3
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: se_lab_exp_7
+      POSTGRES_USER: se_lab_exp_7_user
+      POSTGRES_PASSWORD: se_lab_exp_7_pass
 
 volumes:
-  postgres_data:
+  db:
